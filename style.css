@@ -3,17 +3,36 @@
 body,
 button,
 input {
-  background-color: lightgray;
   font-family: "Roboto Mono", monospace;
 }
 
+button,
+input,
+#calc {
+  background-color: lightgray;
+}
+
 body {
+  background-color: darkgrey;
   margin: 0;
+}
+
+.calc-row,
+#container,
+#calc {
+  display: flex;
+}
+
+#calc,
+#calc-display,
+.calc-btn {
+  border: 2px solid black;
+  border-radius: 4px;
+  box-shadow: black 2px 2px;
 }
 
 #container {
   height: 100vh;
-  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -21,36 +40,24 @@ body {
 #calc {
   width: 500px;
   padding: 16px;
-  border: 2px solid black;
-  border-radius: 4px;
-  box-shadow: black 2px 2px;
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 #calc-display {
   width: 100%;
+  height: 65px;
   margin: 16px;
   padding: 16px;
-  border: 2px solid black;
-  border-radius: 4px;
-  box-shadow: black 2px 2px;
   color: black;
-  font-size: 3rem;
+  font-size: 2rem;
   text-align: right;
-}
-
-.calc-row {
-  display: flex;
 }
 
 .calc-btn {
   width: 100%;
   margin: 16px;
   padding: 16px;
-  border-radius: 4px;
-  box-shadow: black 2px 2px;
   font-size: 2rem;
   cursor: pointer;
 }
