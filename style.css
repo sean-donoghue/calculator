@@ -62,6 +62,6 @@ body {
   cursor: pointer;
 }
 
-.calc-btn:active {
+.calc-btn:active, .calc-btn.active {
   box-shadow: inset 2px 2px black;
 }

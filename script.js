@@ -1,8 +1,10 @@
 const display = document.querySelector("#calc-display");
+const backspaceButton = document.querySelector("#backspace-btn");
 const clearButton = document.querySelector("#clear-btn");
 const equalButton = document.querySelector("#equal-btn");
 const numButtons = document.querySelectorAll(".num-btn");
 const opButtons = document.querySelectorAll(".op-btn");
+const buttons = document.querySelectorAll(".calc-btn");
 
 let firstNumber = null;
 let secondNumber = null;
@@ -77,9 +79,48 @@ opButtons.forEach((button) =>
   })
 );
 
+backspaceButton.addEventListener("click", () => {
+  displayValue = displayValue.slice(0, -1);
+  displayValue = displayValue ? displayValue : "0";
+  display.value = displayValue;
+});
+
 clearButton.addEventListener("click", () => {
   clearValues();
   display.value = "0";
 });
 
 equalButton.addEventListener("click", calculateAndDisplay);
+
+buttons.forEach((button) =>
+  button.addEventListener("click", (e) => {
+    if (!e.isTrusted) { // Add visual effect to simulated button clicks
+      e.target.classList.add("active");
+      setTimeout(() => e.target.classList.remove("active"), 200);
+    }
+  })
+);
+
+document.addEventListener("keydown", (e) => {
+  const operators = ["+", "-", "*", "/"];
+
+  const keyMapping = {
+    Enter: equalButton,
+    "=": equalButton,
+    Escape: clearButton,
+    Backspace: backspaceButton,
+    Delete: backspaceButton,
+  };
+
+  let button = null;
+
+  if (Number.isInteger(Number(e.key))) {
+    button = Array.from(numButtons).find((button) => button.value === e.key);
+  } else if (operators.includes(e.key)) {
+    button = Array.from(opButtons).find((button) => button.value === e.key);
+  } else if (e.key in keyMapping) {
+    button = keyMapping[e.key];
+  }
+
+  button ? button.click() : null;
+});
