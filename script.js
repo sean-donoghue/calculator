@@ -43,9 +43,15 @@ function calculateAndDisplay() {
   if (operator === null) return;
 
   secondNumber = Number.parseFloat(display.value);
-  displayValue = calculateResult();
-  display.value = displayValue;
-  clearValues(false); // displayValue is kept for next calculation
+
+  if (operator === "/" && secondNumber === 0) {
+    clearValues();
+    display.value = "lmao";
+  } else {
+    displayValue = calculateResult();
+    display.value = displayValue;
+    clearValues(false); // displayValue is kept for next calculation
+  }
 }
 
 numButtons.forEach((button) =>
@@ -53,7 +59,7 @@ numButtons.forEach((button) =>
     const numStr = e.target.value;
 
     if (displayValue.length === 8 || (displayValue === "0" && numStr === "0"))
-      return;
+      null; // We want to eliminate these conditions early so below are valid
     else if (displayValue === "0") displayValue = numStr;
     else displayValue += numStr;
 
