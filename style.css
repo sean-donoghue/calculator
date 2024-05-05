@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+
+body,
+button,
+input {
+  background-color: lightgray;
+  font-family: "Roboto Mono", monospace;
+}
+
+body {
+  margin: 0;
+}
+
+#container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#calc {
+  width: 500px;
+  padding: 16px;
+  border: 2px solid black;
+  border-radius: 4px;
+  box-shadow: black 2px 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#calc-display {
+  width: 100%;
+  margin: 16px;
+  padding: 16px;
+  border: 2px solid black;
+  border-radius: 4px;
+  box-shadow: black 2px 2px;
+  color: black;
+  font-size: 3rem;
+  text-align: right;
+}
+
+.calc-row {
+  display: flex;
+}
+
+.calc-btn {
+  width: 100%;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: black 2px 2px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.calc-btn:active {
+  box-shadow: inset 2px 2px black;
+}
